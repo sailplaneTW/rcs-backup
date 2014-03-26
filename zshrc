@@ -315,4 +315,8 @@ check-cmd-self-insert() { zle .self-insert && recolor-cmd }
  zle -N self-insert check-cmd-self-insert
  zle -N backward-delete-char check-cmd-backward-delete-char
 
-
+# complete file name from any location of wanted word
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
+compinit
