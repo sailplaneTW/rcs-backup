@@ -320,3 +320,8 @@ zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 autoload -Uz compinit
 compinit
+
+# auto add sudo to following commands
+sudo_commands=(
+start stop reload restart try-restart isolate kill reset-failed enable disable reenable preset mask unmask link load cancel set-environment unset-environment)
+for c in $sudo_commands; do; alias sc-$c="sudo systemctl $c"; done
